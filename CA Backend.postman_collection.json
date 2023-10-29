@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "2a454b1d-d7c9-4994-9b39-d5acbff0ff41",
+		"name": "CA Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24785891"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/api/v1/users",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/api/v1/users/2781d1e9-6f3f-415b-9285-31e96e64c771",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"2781d1e9-6f3f-415b-9285-31e96e64c771"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "admin Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"response = pm.response.json()\r",
+											"pm.environment.set('access_token', response.access_token)\r",
+											"pm.environment.set('refresh_token', response.refresh_token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "charan",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "ca-backend",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "9NVinBRSixJ0IxxOkDuptol4p21qaPND",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local_url}}/realms/ca/protocol/openid-connect/token",
+									"host": [
+										"{{local_url}}"
+									],
+									"path": [
+										"realms",
+										"ca",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"response = pm.response.json()\r",
+											"pm.environment.set('access_token', response.access_token)\r",
+											"pm.environment.set('refresh_token', response.refresh_token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "user",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "charan",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "ca-website",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "0ArQXDE239cNbVX6rMv834tqlqjbfR13",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local_url}}/realms/ca/protocol/openid-connect/token",
+									"host": [
+										"{{local_url}}"
+									],
+									"path": [
+										"realms",
+										"ca",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "Client Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"response = pm.response.json()\r",
+											"pm.environment.set('access_token', response.access_token)\r",
+											"pm.environment.set('refresh_token', response.refresh_token)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "ca-backend",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "9NVinBRSixJ0IxxOkDuptol4p21qaPND",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local_url}}/realms/ca/protocol/openid-connect/token",
+									"host": [
+										"{{local_url}}"
+									],
+									"path": [
+										"realms",
+										"ca",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"item": [
+						{
+							"name": "Logout of all sessions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{local_url}}/admin/realms/ca/users/2781d1e9-6f3f-415b-9285-31e96e64c771/logout",
+									"host": [
+										"{{local_url}}"
+									],
+									"path": [
+										"admin",
+										"realms",
+										"ca",
+										"users",
+										"2781d1e9-6f3f-415b-9285-31e96e64c771",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Enquiries",
+			"item": [
+				{
+					"name": "Get All Enquiries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/api/v1/enquiries",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"enquiries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Enquiry By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}:5009/api/v1/enquiries/a11f9b05-d102-4be2-9613-ea278c939540",
+							"host": [
+								"{{local_url}}"
+							],
+							"port": "5009",
+							"path": [
+								"api",
+								"v1",
+								"enquiries",
+								"a11f9b05-d102-4be2-9613-ea278c939540"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Enquiry",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"charancj2@gmail.com\",\r\n    \"first_name\": \"charan\",\r\n    \"last_name\": \"kumar\",\r\n    \"service_id\": \"9c0aa8d3-efa5-46e5-b580-0f0cdcd09777\",\r\n    \"service_name\": \"ITR1\",\r\n    \"enquiry_type\": \"Premium\",\r\n    \"current_remarks\": \"I need ITR 1 service\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/api/v1/enquiries",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"enquiries"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "Get all services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}/api/v1/services",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_url}}:5009/api/v1/services/a487818c-b745-47e3-a8dd-10a8fe503128",
+							"host": [
+								"{{local_url}}"
+							],
+							"port": "5009",
+							"path": [
+								"api",
+								"v1",
+								"services",
+								"a487818c-b745-47e3-a8dd-10a8fe503128"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_name\": \"ITR 1\",\r\n    \"service_type\": \"ITR\",\r\n    \"service_price\": \"1999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/api/v1/services",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local_url}}:5009/api/v1/__health",
+					"host": [
+						"{{local_url}}"
+					],
+					"port": "5009",
+					"path": [
+						"api",
+						"v1",
+						"__health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

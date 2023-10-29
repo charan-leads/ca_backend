@@ -1,0 +1,378 @@
+{
+    "$schema": "https://www.krakend.io/schema/v3.json",
+    "version": 3,
+    "port": 8080,
+    "name": "Agrani - API Gateway",
+    "timeout": "30000ms",
+    "cache_ttl": "300s",
+    "output_encoding": "no-op",
+    "extra_config": {
+        "router": {
+            "return_error_msg": true,
+            "error_body": {
+                "404": {
+                    "success": false,
+                    "message": "Oops! Something went wrong. Please try again.",
+                    "data": [],
+                    "error": {
+                        "message": "404 Not Found",
+                        "status": 404,
+                        "details": "Requested endpoint Not Found"
+                    }
+                },
+                "405": {
+                    "success": false,
+                    "message": "Oops! Something went wrong. Please try again.",
+                    "data": [],
+                    "error": {
+                        "message": "405 Method Not Allowed",
+                        "status": 405,
+                        "details": "Requested Method Not Allowed for this endpoint"
+                    }
+                }
+            }
+        }
+    },
+    "endpoints": [
+        {
+            "endpoint": "/api/v1/realms/ca/protocol/openid-connect/token",
+            "output_encoding": "no-op",
+            "method": "POST",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "POST",
+                    "url_pattern": "/realms/ca/protocol/openid-connect/token",
+                    "host": [
+                        "http://ca_auth:8080"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/realms/ca/protocol/openid-connect/certs_one",
+            "output_encoding": "no-op",
+            "method": "GET",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "GET",
+                    "url_pattern": "/realms/ca/protocol/openid-connect/certs_one",
+                    "host": [
+                        "http://ca_auth:8080"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}",
+            "output_encoding": "no-op",
+            "method": "GET",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "GET",
+                    "url_pattern": "/api/v1/{one}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}",
+            "output_encoding": "no-op",
+            "method": "POST",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "POST",
+                    "url_pattern": "/api/v1/{one}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}",
+            "output_encoding": "no-op",
+            "method": "PUT",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "PUT",
+                    "url_pattern": "/api/v1/{one}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}",
+            "output_encoding": "no-op",
+            "method": "PATCH",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "PATCH",
+                    "url_pattern": "/api/v1/{one}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}",
+            "output_encoding": "no-op",
+            "method": "DELETE",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "DELETE",
+                    "url_pattern": "/api/v1/{one}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}",
+            "output_encoding": "no-op",
+            "method": "GET",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "GET",
+                    "url_pattern": "/api/v1/{one}/{two}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}",
+            "output_encoding": "no-op",
+            "method": "POST",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "POST",
+                    "url_pattern": "/api/v1/{one}/{two}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}",
+            "output_encoding": "no-op",
+            "method": "PUT",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "PUT",
+                    "url_pattern": "/api/v1/{one}/{two}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}",
+            "output_encoding": "no-op",
+            "method": "PATCH",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "PATCH",
+                    "url_pattern": "/api/v1/{one}/{two}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}",
+            "output_encoding": "no-op",
+            "method": "DELETE",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "DELETE",
+                    "url_pattern": "/api/v1/{one}/{two}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}/{three}",
+            "output_encoding": "no-op",
+            "method": "GET",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "GET",
+                    "url_pattern": "/api/v1/{one}/{two}/{three}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}/{three}",
+            "output_encoding": "no-op",
+            "method": "POST",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "POST",
+                    "url_pattern": "/api/v1/{one}/{two}/{three}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}/{three}",
+            "output_encoding": "no-op",
+            "method": "PUT",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "PUT",
+                    "url_pattern": "/api/v1/{one}/{two}/{three}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}/{three}",
+            "output_encoding": "no-op",
+            "method": "PATCH",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "PATCH",
+                    "url_pattern": "/api/v1/{one}/{two}/{three}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        },
+        {
+            "endpoint": "/api/v1/{one}/{two}/{three}",
+            "output_encoding": "no-op",
+            "method": "DELETE",
+            "input_headers": [
+                "*"
+            ],
+            "input_query_strings": [
+                "*"
+            ],
+            "backend": [
+                {
+                    "method": "DELETE",
+                    "url_pattern": "/api/v1/{one}/{two}/{three}",
+                    "host": [
+                        "http://ca_backend:5000"
+                    ]
+                }
+            ]
+        }
+    ]
+}
