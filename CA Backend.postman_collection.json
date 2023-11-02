@@ -125,9 +125,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{local_url}}/realms/ca/protocol/openid-connect/token",
+									"raw": "{{auth_url}}/realms/ca/protocol/openid-connect/token",
 									"host": [
-										"{{local_url}}"
+										"{{auth_url}}"
 									],
 									"path": [
 										"realms",
@@ -189,9 +189,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{local_url}}/realms/ca/protocol/openid-connect/token",
+									"raw": "{{auth_url}}/realms/ca/protocol/openid-connect/token",
 									"host": [
-										"{{local_url}}"
+										"{{auth_url}}"
 									],
 									"path": [
 										"realms",
@@ -248,9 +248,9 @@
 									]
 								},
 								"url": {
-									"raw": "{{local_url}}/realms/ca/protocol/openid-connect/token",
+									"raw": "{{auth_url}}/realms/ca/protocol/openid-connect/token",
 									"host": [
-										"{{local_url}}"
+										"{{auth_url}}"
 									],
 									"path": [
 										"realms",
@@ -284,16 +284,16 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{local_url}}/admin/realms/ca/users/2781d1e9-6f3f-415b-9285-31e96e64c771/logout",
+									"raw": "{{auth_url}}/admin/realms/ca/users/be7a73f0-7703-4243-ba40-a99ee1f1ead8/logout",
 									"host": [
-										"{{local_url}}"
+										"{{auth_url}}"
 									],
 									"path": [
 										"admin",
 										"realms",
 										"ca",
 										"users",
-										"2781d1e9-6f3f-415b-9285-31e96e64c771",
+										"be7a73f0-7703-4243-ba40-a99ee1f1ead8",
 										"logout"
 									]
 								}
@@ -323,9 +323,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local_url}}/api/v1/enquiries",
+							"raw": "{{backend_url}}/api/v1/enquiries",
 							"host": [
-								"{{local_url}}"
+								"{{backend_url}}"
 							],
 							"path": [
 								"api",
@@ -352,11 +352,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local_url}}:5009/api/v1/enquiries/a11f9b05-d102-4be2-9613-ea278c939540",
+							"raw": "{{backend_url}}/api/v1/enquiries/a11f9b05-d102-4be2-9613-ea278c939540",
 							"host": [
-								"{{local_url}}"
+								"{{backend_url}}"
 							],
-							"port": "5009",
 							"path": [
 								"api",
 								"v1",
@@ -374,7 +373,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"charancj2@gmail.com\",\r\n    \"first_name\": \"charan\",\r\n    \"last_name\": \"kumar\",\r\n    \"service_id\": \"9c0aa8d3-efa5-46e5-b580-0f0cdcd09777\",\r\n    \"service_name\": \"ITR1\",\r\n    \"enquiry_type\": \"Premium\",\r\n    \"current_remarks\": \"I need ITR 1 service\"\r\n}",
+							"raw": "{\r\n    \"email\": \"charancj6@gmail.com\",\r\n    \"first_name\": \"Charan\",\r\n    \"last_name\": \"Kumar\",\r\n    \"service_id\": \"985c42ed-7094-4ce4-9746-c4748cf4ee10\",\r\n    \"enquiry_type\": \"Premium\",\r\n    \"current_remarks\": \"I need ITR 1 service\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -382,14 +381,131 @@
 							}
 						},
 						"url": {
-							"raw": "{{local_url}}/api/v1/enquiries",
+							"raw": "{{backend_url}}/api/v1/enquiries",
 							"host": [
-								"{{local_url}}"
+								"{{backend_url}}"
 							],
 							"path": [
 								"api",
 								"v1",
 								"enquiries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Enquiry",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_id\": \"53b78e86-9963-4406-9f78-ae4c9f666bc3\",\r\n    \"current_remarks\": \"I need ITR 1 service this is updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend_url}}/api/v1/enquiries/3053bc95-6f79-49da-b281-0f489ffe2a34",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"enquiries",
+								"3053bc95-6f79-49da-b281-0f489ffe2a34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Enquiry",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_id\": \"53b78e86-9963-4406-9f78-ae4c9f666bc3\",\r\n    \"current_remarks\": \"I need ITR 1 service this is updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend_url}}/api/v1/enquiries/3053bc95-6f79-49da-b281-0f489ffe2a34",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"enquiries",
+								"3053bc95-6f79-49da-b281-0f489ffe2a34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Enquiry",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_id\": \"53b78e86-9963-4406-9f78-ae4c9f666bc3\",\r\n    \"current_remarks\": \"I need ITR 1 service this is updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend_url}}/api/v1/enquiries/3053bc95-6f79-49da-b281-0f489ffe2a34",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"enquiries",
+								"3053bc95-6f79-49da-b281-0f489ffe2a34"
 							]
 						}
 					},
@@ -406,9 +522,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local_url}}/api/v1/services",
+							"raw": "{{backend_url}}/api/v1/services",
 							"host": [
-								"{{local_url}}"
+								"{{backend_url}}"
 							],
 							"path": [
 								"api",
@@ -435,16 +551,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local_url}}:5009/api/v1/services/a487818c-b745-47e3-a8dd-10a8fe503128",
+							"raw": "{{backend_url}}/api/v1/services/471e6efd-8372-49fb-b183-d98c8b9220bb",
 							"host": [
-								"{{local_url}}"
+								"{{backend_url}}"
 							],
-							"port": "5009",
 							"path": [
 								"api",
 								"v1",
 								"services",
-								"a487818c-b745-47e3-a8dd-10a8fe503128"
+								"471e6efd-8372-49fb-b183-d98c8b9220bb"
 							]
 						}
 					},
@@ -467,7 +582,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"service_name\": \"ITR 1\",\r\n    \"service_type\": \"ITR\",\r\n    \"service_price\": \"1999\"\r\n}",
+							"raw": "{\r\n    \"service_name\": \"ITR 1\",\r\n    \"service_type\": \"ITR\",\r\n    \"service_price\": \"1999\",\r\n    \"small_description\": \"This is a ITR 1 service\",\r\n    \"description\": \"This is a ITR service and the name of the service is ITR 1\",\r\n    \"discount_type\": \"Diwali Discount\",\r\n    \"discount\": \"12%\",\r\n    \"faq\": [\r\n        {\r\n            \"question\": \"what is ITR\",\r\n            \"answer\": \"ITR is a service\"\r\n        },\r\n        {\r\n            \"question\": \"How to apply\",\r\n            \"answer\": \"From our site\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -475,14 +590,122 @@
 							}
 						},
 						"url": {
-							"raw": "{{local_url}}/api/v1/services",
+							"raw": "{{backend_url}}/api/v1/services",
 							"host": [
-								"{{local_url}}"
+								"{{backend_url}}"
 							],
 							"path": [
 								"api",
 								"v1",
 								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_name\": \"ITR 2\",\r\n    \"service_type\": \"ITR\",\r\n    \"service_price\": \"1999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend_url}}/api/v1/services/6122deaa-2c59-42a7-b3ea-b44eeb6a169c",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services",
+								"6122deaa-2c59-42a7-b3ea-b44eeb6a169c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service_price\": \"2999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend_url}}/api/v1/services/471e6efd-8372-49fb-b183-d98c8b9220bb",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services",
+								"471e6efd-8372-49fb-b183-d98c8b9220bb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{backend_url}}/api/v1/services/471e6efd-8372-49fb-b183-d98c8b9220bb",
+							"host": [
+								"{{backend_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"services",
+								"471e6efd-8372-49fb-b183-d98c8b9220bb"
 							]
 						}
 					},
@@ -496,11 +719,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{local_url}}:5009/api/v1/__health",
+					"raw": "{{backend_url}}/api/v1/__health",
 					"host": [
-						"{{local_url}}"
+						"{{backend_url}}"
 					],
-					"port": "5009",
 					"path": [
 						"api",
 						"v1",
